@@ -1,12 +1,17 @@
 ﻿<Page x:Class="WpfApp.Pages.Employees"
+      Name="EmployeesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:databinding="clr-namespace:WpfApp.StaticResources"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Сотрудники">
-
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="Сотрудники" Loaded="EmployeesPage_Loaded">
+    <Page.Resources>
+        <databinding:ListTitle x:Key="ListTitleKey"/>
+    </Page.Resources>
+    
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -14,7 +19,127 @@
                 <GradientStop Color="#FF2CFF36" Offset="0.53"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label Content="Сотрудники" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="74" Width="221" FontSize="36" FontWeight="Bold"/>
+        
+        <StackPanel>
+            <ToolBar 
+            Name="ToolBar1" 
+            Margin="6,10,0,445" 
+            Height="45">
 
+                <Button 
+                Name="Refresh"   
+                Margin="5,2,5,2"   
+                ToolTip="Обновить">
+                    <Image Source="/Images/refresh_48.png"></Image>
+                </Button>
+
+                <Button 
+                Name="Add" 
+                ToolTip="Добавить нового клиента" 
+                Margin="5,2,5,2">
+                    <Image Source="/Images/add_48.png" />
+                </Button>
+
+                <Button 
+                Name="Edit" 
+                ToolTip="Редактировать" 
+                Margin="5,2,5,2"
+                Click="Edit_Click">
+                    <Image Source="/Images/paper_content_pencil_48.png" />
+                </Button>
+
+                <Button 
+                Name="Save" 
+                ToolTip="Сохранить" 
+                Margin="5,2,5,2">
+                    <Image Source="/Images/floppy_disk_48.png" />
+                </Button>
+
+                <Button 
+                Name="Delete" 
+                ToolTip="Удалить" 
+                Margin="5,2,5,2" >
+                    <Image Source="/Images/cancel_48.png" />
+                </Button>
+
+            </ToolBar>
+        </StackPanel>
+        
+        <Label Content="Сотрудники" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="74" Width="221" FontSize="36" FontWeight="Bold"/>
+        <DataGrid Name="DataGridEmployee"  
+                  ItemsSource="{Binding}"
+                  AutoGenerateColumns="False" 
+                  MaxWidth="780" MaxHeight="450" 
+                  AlternatingRowBackground="#FFE6D3EF"  
+                  BorderBrush="#FF1F33EB" 
+                  BorderThickness="3"  
+                  IsReadOnly="True" 
+                  RowHeight="25" 
+                  Cursor="Hand"
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False" Margin="10,70,10,0" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код  " 
+            		Binding="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            		IsReadOnly="True"/>
+                <DataGridTextColumn Header="Фамилия            "
+            		Binding="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Имя                "
+            		Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Отчество           "
+            		Binding="{Binding Patronymic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridComboBoxColumn Header="Должность          "
+                                    ItemsSource="{Binding Source={StaticResource ListTitleKey}}"
+                                    DisplayMemberPath="Title1"
+                                    SelectedValueBinding="{Binding Path = TitleID, 
+                                    Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedValuePath="Id">
+                </DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Телефон            "
+            		Binding="{Binding Telephone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <DataGridTemplateColumn Header="Дата приёма        ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DateReceipt, StringFormat={}{0:dd\.}{0:MM\.}{0:yyyy}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DateReceipt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Дата увольнения    " >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DataDesmissal, StringFormat={}{0:dd\.}{0:MM\.}{0:yyyy}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DataDesmissal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Height="35" VerticalAlignment="Bottom">
+            <StatusBar Margin="3,10,3,0" Height="25">
+                <TextBlock Width="150">Статус состояния записей:</TextBlock>
+                <TextBlock Width="100" x:Name="tbSt"></TextBlock>
+                <TextBlock Width="118" Margin="130,0,0,0">
+                    Количество записей:
+                </TextBlock>
+                <TextBlock Width="60" x:Name="tbCount"></TextBlock>
+                <TextBlock Width="85">
+                    Текущая дата:
+                </TextBlock>
+                <TextBlock Width="95" x:Name="tbDate"></TextBlock>
+            </StatusBar>
+        </Grid>
     </Grid>
 </Page>
