@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Журнал" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Журнал" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Frame Name="frame1" Margin="3" Source="Pages/SelectedPage.xaml" Foreground="#FFE4D8D8" BorderBrush="#FFF7F3F3" Background="#FFB3D9E5"/>
     </Grid>
