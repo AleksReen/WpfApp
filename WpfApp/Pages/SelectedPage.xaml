@@ -3,10 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
-      Title="SelectedPage">
+      Title="Страница выбора">
 
     <Grid>
         <Grid.Background>
@@ -18,32 +17,15 @@
         <Frame x:Name="mainFrame"/>
         <Label Content="Журнал учета" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="74" Width="262" FontSize="36" FontWeight="Bold"/>
         <Label Content="рабочих сотрудников" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="74" Width="397" FontSize="36" FontWeight="Bold"/>
-        <Button Content="Выход из программы" 
-                Name="btnClose"
-                Click="btnClose_Click"
-                HorizontalAlignment="Left" 
-                Height="23" 
-                Margin="30,265,0,0" 
-                VerticalAlignment="Top" 
-                Width="169">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
-                    <GradientStop Color="#FF5DFF00" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
         <Button Content="Справочник Сотрудники" 
                 Name="btnEmployee"
                 Click="btnEmployee_Click"
                 HorizontalAlignment="Left" 
-                Margin="30,211,0,0" 
+                Margin="40,211,0,0" 
                 VerticalAlignment="Top" 
-                Width="169" 
+                Width="170" 
                 Grid.ColumnSpan="2" 
-                Height="22">
+                Height="50">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -53,7 +35,13 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Content="Отчет за период" HorizontalAlignment="Left" Margin="30,238,0,0" VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Height="22">
+        <Button Content="Выход из программы" 
+                Name="btnClose"
+                Click="btnClose_Click" 
+                Height="50" 
+                Width="170"
+                Margin="580,211,0,50" 
+                VerticalAlignment="Top" HorizontalAlignment="Left">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
