@@ -27,21 +27,23 @@
             Height="45">
 
                 <Button 
-                Name="Refresh"   
+                Name="Refresh"
+                Click="Refresh_Click"
                 Margin="5,2,5,2"   
                 ToolTip="Обновить">
                     <Image Source="/Images/refresh_48.png"></Image>
                 </Button>
 
                 <Button 
-                Name="Add" 
+                Name="Add"
+                Click="Add_Click"
                 ToolTip="Добавить нового клиента" 
                 Margin="5,2,5,2">
                     <Image Source="/Images/add_48.png" />
                 </Button>
 
                 <Button 
-                Name="Edit" 
+                Name="Edit"   
                 ToolTip="Редактировать" 
                 Margin="5,2,5,2"
                 Click="Edit_Click">
@@ -49,7 +51,8 @@
                 </Button>
 
                 <Button 
-                Name="Save" 
+                Name="Save"
+                Click="Save_Click"
                 ToolTip="Сохранить" 
                 Margin="5,2,5,2">
                     <Image Source="/Images/floppy_disk_48.png" />
@@ -57,6 +60,7 @@
 
                 <Button 
                 Name="Delete" 
+                Click="Delete_Click"
                 ToolTip="Удалить" 
                 Margin="5,2,5,2" >
                     <Image Source="/Images/cancel_48.png" />
@@ -66,10 +70,11 @@
         </StackPanel>
         
         <Label Content="Сотрудники" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="74" Width="221" FontSize="36" FontWeight="Bold"/>
-        <DataGrid Name="DataGridEmployee"  
-                  ItemsSource="{Binding}"
+        <DataGrid Name="DataGridEmployee"
+                  LoadingRow="DataGridEmployee_LoadingRow"
+                  ItemsSource="{Binding}"                
                   AutoGenerateColumns="False" 
-                  MaxWidth="780" MaxHeight="450" 
+                  MaxWidth="780" MaxHeight="420" 
                   AlternatingRowBackground="#FFE6D3EF"  
                   BorderBrush="#FF1F33EB" 
                   BorderThickness="3"  
