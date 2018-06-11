@@ -8,9 +8,6 @@ using WpfApp.Pages.Forms;
 
 namespace WpfApp.Pages
 {
-    /// <summary>
-    /// Interaction logic for Employees.xaml
-    /// </summary>
     public partial class Employees : Page
     {
         public static EmpDBEntities db { get; set; }

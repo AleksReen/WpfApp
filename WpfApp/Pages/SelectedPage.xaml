@@ -16,7 +16,7 @@
         </Grid.Background>
         <Frame x:Name="mainFrame"/>
         <Label Content="Журнал учета" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Height="74" Width="262" FontSize="36" FontWeight="Bold"/>
-        <Label Content="рабочих сотрудников" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="74" Width="397" FontSize="36" FontWeight="Bold"/>
+        <Label Content="работающих сотрудников" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="74" Width="470" FontSize="36" FontWeight="Bold"/>
         <Button Content="Справочник Сотрудники" 
                 Name="btnEmployee"
                 Click="btnEmployee_Click"
@@ -35,12 +35,30 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        <Button Content="Отчет по количеству" 
+                Name="btnReport"
+                Click="btnReport_Click"
+                HorizontalAlignment="Left" 
+                Margin="40,280,0,0" 
+                VerticalAlignment="Top" 
+                Width="170" 
+                Grid.ColumnSpan="2" 
+                Height="50">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF5DFF00" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
         <Button Content="Выход из программы" 
                 Name="btnClose"
                 Click="btnClose_Click" 
                 Height="50" 
                 Width="170"
-                Margin="580,211,0,50" 
+                Margin="40,350,0,0" 
                 VerticalAlignment="Top" HorizontalAlignment="Left">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
