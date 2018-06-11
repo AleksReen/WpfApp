@@ -12,6 +12,8 @@ namespace WpfApp.EDMX
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class EmpDBEntities : DbContext
     {
@@ -27,5 +29,10 @@ namespace WpfApp.EDMX
     
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Title> Title { get; set; }
+    
+        public virtual ObjectResult<GetEmployeesReport_Result> GetEmployeesReport()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployeesReport_Result>("GetEmployeesReport");
+        }
     }
 }

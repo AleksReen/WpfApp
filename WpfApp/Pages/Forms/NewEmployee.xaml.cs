@@ -4,9 +4,6 @@ using WpfApp.EDMX;
 
 namespace WpfApp.Pages.Forms
 {
-    /// <summary>
-    /// Interaction logic for NewEmployee.xaml
-    /// </summary>
     public partial class NewEmployee : Window
     {
         public static EmpDBEntities db { get; set; }

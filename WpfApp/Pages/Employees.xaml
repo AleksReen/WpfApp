@@ -134,16 +134,16 @@
         </DataGrid>
         <Grid Height="35" VerticalAlignment="Bottom">
             <StatusBar Margin="3,10,3,0" Height="25">
-                <TextBlock Width="150">Статус состояния записей:</TextBlock>
-                <TextBlock Width="100" x:Name="tbSt"></TextBlock>
-                <TextBlock Width="118" Margin="130,0,0,0">
+                <TextBlock Width="150" FontWeight="Bold">Статус состояния записей:</TextBlock>
+                <TextBlock Width="100" FontWeight="Bold" x:Name="tbSt"></TextBlock>
+                <TextBlock Width="118" FontWeight="Bold" Margin="130,0,0,0">
                     Количество записей:
                 </TextBlock>
-                <TextBlock Width="60" x:Name="tbCount"></TextBlock>
-                <TextBlock Width="85">
+                <TextBlock Width="60" FontWeight="Bold" x:Name="tbCount"></TextBlock>
+                <TextBlock Width="85" FontWeight="Bold">
                     Текущая дата:
                 </TextBlock>
-                <TextBlock Width="95" x:Name="tbDate"></TextBlock>
+                <TextBlock Width="95" FontWeight="Bold" x:Name="tbDate"></TextBlock>
             </StatusBar>
         </Grid>
     </Grid>
