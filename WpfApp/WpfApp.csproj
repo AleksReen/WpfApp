@@ -80,6 +80,9 @@
     <Compile Include="EDMX\GetEmployeesReport_Result.cs">
       <DependentUpon>ModelEmpDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Forms\EditEmployeer.xaml.cs">
+      <DependentUpon>EditEmployeer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Forms\NewEmployee.xaml.cs">
       <DependentUpon>NewEmployee.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,7 @@
     </Compile>
     <Compile Include="StaticResources\ListTitle.cs" />
     <Compile Include="StaticResources\ListTitleEmp.cs" />
+    <Compile Include="StaticResources\ListTitleEmpEdit.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,6 +126,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Employees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Forms\EditEmployeer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

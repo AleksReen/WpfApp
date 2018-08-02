@@ -25,7 +25,30 @@
                    Background="Transparent" 
                    Width="187" 
                    FontSize="14"/>
-            <TextBox x:Name="tbSurname" Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+            <TextBox x:Name="tbSurname" Height="30" Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14">
+                <TextBox.Style>
+                    <Style TargetType="TextBox"  xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Введите фамилию" Foreground="LightGray" Background="White" Width="190" Height="30" VerticalContentAlignment="Center" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center">

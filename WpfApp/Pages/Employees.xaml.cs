@@ -18,6 +18,7 @@ namespace WpfApp.Pages
             db = new EmpDBEntities();
             InitializeComponent();
             ListEmployees = new List<Employee>();
+            tbDate.Text = DateTime.Today.ToString("dd MMMM yyyy");
         }
 
         private void EmployeesPage_Loaded(object sender, RoutedEventArgs e)
@@ -31,15 +32,23 @@ namespace WpfApp.Pages
             ListEmployees = db.Employee.OrderBy(x => x.Surname).ToList();
             this.DataGridEmployee.ItemsSource = ListEmployees;
             tbCount.Text = ListEmployees.Count().ToString();
-            tbDate.Text = DateTime.Today.ToString("dd MMMM yyyy");
+           
             tbSt.Text = "ЗАГРУЖЕНО";
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            DataGridEmployee.IsReadOnly = false;
-            DataGridEmployee.BeginEdit();
-            tbSt.Text = "РЕДАКТИРУЕТСЯ";
+            
+            Employee emp = DataGridEmployee.SelectedItem as Employee;
+            var editEmployeer = new EditEmployeer(emp);
+            editEmployeer.ShowDialog();
+            editEmployeer.Closed += EditEmployeer_Closed;
+
+        }
+
+        private void EditEmployeer_Closed(object sender, EventArgs e)
+        {
+            RefreshDataGrid();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

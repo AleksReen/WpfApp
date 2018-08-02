@@ -93,14 +93,20 @@
             		Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Отчество           "
             		Binding="{Binding Patronymic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridComboBoxColumn Header="Должность          "
+
+                <DataGridTextColumn Header="Должность           "
+            		Binding="{Binding Title.Title1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!--<DataGridComboBoxColumn Header="Должность          "
                                     ItemsSource="{Binding Source={StaticResource ListTitleKey}}"
                                     DisplayMemberPath="Title1"
                                     SelectedValueBinding="{Binding Path = TitleID, 
                                     Mode=TwoWay, 
                                     UpdateSourceTrigger=PropertyChanged}"
                                     SelectedValuePath="Id">
-                </DataGridComboBoxColumn>
+                </DataGridComboBoxColumn>-->
+                
+                
                 <DataGridTextColumn Header="Телефон            "
             		Binding="{Binding Telephone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 
